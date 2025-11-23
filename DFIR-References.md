@@ -1,4 +1,13 @@
 # Cheat-Sheet
+### 🛡️ MDE Live Response ###
+Copy a file
+```
+getfile c:\path\to\file\nameoffile.txt
+```
+Quarantine a file
+```
+remediate file C:\Path\To\Your\File.exe
+```
 ### 💡 Useful PowerShell Commands ###
 Finding a file in an unknown location on the C:\ drive
 ```
