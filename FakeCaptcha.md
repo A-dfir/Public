@@ -32,11 +32,11 @@ CAPTCHAs are ubiquitous and benign. Attackers exploit this trust by mimicking co
 
 Because the user manually runs the malicious command:
 
-No exploit is required
+•	No exploit is required
 
-No unwanted file initially touches disk
+•	No unwanted file initially touches disk
 
-Script execution appears user-initiated
+•	Script execution appears user-initiated
 
 This allows the attack to evade early detection.
 
