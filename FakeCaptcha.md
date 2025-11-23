@@ -48,11 +48,11 @@ With drive-by downloads and plugin exploits largely mitigated, attackers have sh
 
 Fake CAPTCHA pages can be mass-produced and distributed via:
 
-Malvertising
+•	Malvertising
 
-Compromised legitimate sites
+•	Compromised legitimate sites
 
-Redirect chains
+•	Redirect chains
 
 This makes widespread deployment trivial.
 
