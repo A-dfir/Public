@@ -1,57 +1,24 @@
-# 🔍 A-DFIR Portfolio | Professional Cybersecurity Work
+## CVE-2025-8088 — Startup Items Dropped and Executed by WinRAR/UnRAR
 
-Welcome to my Digital Forensics & Incident Response portfolio.  
-This repository showcases my hands-on experience across:
+### 🔎 Query 1: Identify Suspicious Startup Folder Drops
 
-- 🚨 Incident Response  
-- 🧪 Malware Analysis  
-- 🛡️ Detection Engineering  
-- ☁️ Cloud Forensics  
-- 🛠️ Custom DFIR tooling  
-- 🔍 Event log analysis & timeline reconstruction  
-
-Each section includes real or simulated investigations, detection rules, tools, and technical write-ups.
-
----
-
-## 📁 Portfolio Sections
-
-### **1. Case Studies**  
-Hands-on investigations demonstrating analysis, findings, and methodology.  
-➡️ `./case-studies/`
-
-### **2. Detection Engineering**  
-Sigma, YARA, KQL, and EDR-style detections.  
-➡️ `./detections/`
-
-### **3. DFIR Tools**  
-Scripts and utilities for forensic triage and log processing.  
-➡️ `./tools/`
-
-### **4. Cloud Investigation Guides**  
-AWS, Azure, and GCP incident response walkthroughs and queries.  
-➡️ `./cloud-investigations/`
-
-### **5. Technical Blog**  
-Writing samples demonstrating clear communication of complex concepts.  
-➡️ `./blog/`
-
----
-
-## 🎯 About This Portfolio
-This portfolio is designed to show:
-- Clear DFIR thinking  
-- Strong technical analysis  
-- Practical experience with real-world scenarios  
-- Ability to communicate findings  
-- Familiarity with modern cloud and endpoint environments  
-
----
-
-## ✉️ Contact
-If you'd like to connect, collaborate, or discuss security opportunities, feel free to reach out.
-
-<!---
-A-DFIR is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-You can click the Preview link to take a look at your changes.
----># DFIR Portfolio – A-DFIR
+```kql
+let SuspiciousDrops =
+DeviceFileEvents
+| where Timestamp > ago(14d)
+| where ActionType in ("FileCreated","FileRenamed")
+| where FolderPath has @"\Start Menu\Programs\Startup"
+| where tolower(InitiatingProcessFileName) in ("winrar.exe","unrar.exe","rar.exe","unrar.dll")
+| project DeviceId, DeviceName, DropTime=Timestamp, FileName, FullPath=FolderPath, 
+          Dropper=InitiatingProcessFileName, DropperCmd=InitiatingProcessCommandLine;
+```
+### 🚨 Query 2: Identify Execution of Those Dropped Startup Items
+```kql
+DeviceProcessEvents
+| where Timestamp > ago(14d)
+| where FolderPath has @"\Start Menu\Programs\Startup"
+| project DeviceId, DeviceName, ProcTime=Timestamp, FileName, ProcessCommandLine, InitiatingProcessFileName
+| join kind=innerunique SuspiciousDrops on DeviceId, DeviceName, FileName
+| where ProcTime between (DropTime .. DropTime + 3d)
+| project ProcTime, DropTime, DeviceName, FileName, ProcessCommandLine, InitiatingProcessFileName, Dropper, DropperCmd
+| order by ProcTime desc
