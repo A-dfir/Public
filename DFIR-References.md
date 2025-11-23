@@ -32,3 +32,45 @@ NTUSER.DAT\Software\Microsoft\Windows\CurrentVersion\Explorer\UserAssist\{GUID}\
 NTUSER.DAT\Software\Microsoft\Windows\CurrentVersion\Explorer\ComDlg32\LastVisitedPidMRU
 NTUSER.DAT\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU
 ```
+# Mac Forensics
+User Home Directory Artifacts
+Most user activity on macOS is under the user’s home folder:
+```
+~/Library/
+```
+Logs
+```
+~/Library/Logs/
+Application-specific logs, crash reports.
+```
+
+Preferences (Plist files)
+```
+~/Library/Preferences/*.plist
+Tracks app configurations, recently accessed items, user choices.
+```
+
+Application Support
+```
+~/Library/Application Support/
+Contains app-specific data, caches, histories.
+```
+Safari Browser Artifacts
+```
+History: ~/Library/Safari/History.db
+Downloads: ~/Library/Safari/Downloads.plist
+Cookies: /Library/Cookies/Cookies.binarycookies
+Chrome / Brave / Edge Browser Artifacts
+~/Library/Application Support/Google/Chrome/Default/
+History, cookies, logins, cache.
+```
+Mail.app
+```
+~/Library/Mail/V#
+Emails, envelopes, logs.
+```
+Keychains
+```
+~/Library/Keychains/
+Local password storage (encrypted).
+```
