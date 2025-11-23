@@ -1,57 +1,31 @@
-# 🔍 A-DFIR Portfolio | Professional Cybersecurity Work
+# Case Study: Windows Logon Anomaly Investigation
 
-Welcome to my Digital Forensics & Incident Response portfolio.  
-This repository showcases my hands-on experience across:
+## 📌 Scenario
+A workstation showed multiple failed logons followed by a successful login from an unexpected account during non-business hours.
 
-- 🚨 Incident Response  
-- 🧪 Malware Analysis  
-- 🛡️ Detection Engineering  
-- ☁️ Cloud Forensics  
-- 🛠️ Custom DFIR tooling  
-- 🔍 Event log analysis & timeline reconstruction  
+## 🎯 Objective
+- Determine if the activity represents credential stuffing or brute force  
+- Identify artifacts of lateral movement  
+- Build a timeline of attacker actions
 
-Each section includes real or simulated investigations, detection rules, tools, and technical write-ups.
+## 🧪 Tools Used
+- Windows Event Viewer  
+- Sysmon logs  
+- PowerShell (Get-WinEvent)  
+- Timeline reconstruction (csv output)
 
----
+## 🔍 Key Findings
+- ~200 failed logon attempts from 10.0.5.23
+- Successful login using `localadmin` at 03:14 AM
+- Process execution consistent with command-line reconnaissance
+- No evidence of data exfiltration
 
-## 📁 Portfolio Sections
+## 📊 Artifacts Analyzed
+- Security.evtx (4624/4625/4672)
+- Sysmon Event ID 1, 3, 7, 11
+- Prefetch files
+- Registry Run keys
+- Timeline in `timeline.csv`
 
-### **1. Case Studies**  
-Hands-on investigations demonstrating analysis, findings, and methodology.  
-➡️ `./case-studies/`
-
-### **2. Detection Engineering**  
-Sigma, YARA, KQL, and EDR-style detections.  
-➡️ `./detections/`
-
-### **3. DFIR Tools**  
-Scripts and utilities for forensic triage and log processing.  
-➡️ `./tools/`
-
-### **4. Cloud Investigation Guides**  
-AWS, Azure, and GCP incident response walkthroughs and queries.  
-➡️ `./cloud-investigations/`
-
-### **5. Technical Blog**  
-Writing samples demonstrating clear communication of complex concepts.  
-➡️ `./blog/`
-
----
-
-## 🎯 About This Portfolio
-This portfolio is designed to show:
-- Clear DFIR thinking  
-- Strong technical analysis  
-- Practical experience with real-world scenarios  
-- Ability to communicate findings  
-- Familiarity with modern cloud and endpoint environments  
-
----
-
-## ✉️ Contact
-If you'd like to connect, collaborate, or discuss security opportunities, feel free to reach out.
-
-<!---
-A-DFIR is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-You can click the Preview link to take a look at your changes.
----># DFIR Portfolio – A-DFIR
+## 📝 Conclusion
+The activity was malicious. Evidence supports a brute-force login followed by recon. Machine was isolated, credentials rotated, and logs archived.
