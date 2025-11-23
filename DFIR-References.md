@@ -1,4 +1,4 @@
-### Cheat-Sheet
+# Cheat-Sheet
 ### 💡 Useful PowerShell Commands ###
 Finding a file in an unknown location on the C:\ drive
 ```
@@ -19,5 +19,16 @@ C:\Windows\System32\config\software
 C:\Windows\System32\config\system
 C:\Windows\Users\%UserProfile%\NTUSER.dat
 ```
-Browser History
-C:\Windows\Users\%UserProfile%\AppData\
+Browser History File Locations
+```
+C:\Windows\Users\%UserProfile%\AppData\Microsoft\Edge\User Data\Default\History
+C:\Windows\Users\%UserProfile%\AppData\Google\Chrome\User Data\Default\History
+```
+Evidence of execution
+```
+C:\Windows\Prefetch
+NTUSER.DAT\Software\Microsoft\Windows\CurrentVersion\Explorer\UserAssist\{GUID}\Count
+(If {GUID} = CEBFF5CD | Executable File Execution) OR (If {GUID} = F457C4B | Shortcut File Execution)
+NTUSER.DAT\Software\Microsoft\Windows\CurrentVersion\Explorer\ComDlg32\LastVisitedPidMRU
+NTUSER.DAT\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU
+```
