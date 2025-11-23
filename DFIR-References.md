@@ -8,13 +8,18 @@ Quarantine a file
 ```
 remediate file C:\Path\To\Your\File.exe
 ```
+### 🛡️ Elastic/Kibana ###
+Logon Remote Events Query
+```kql
+event.code: 4624 AND winlog.logon.type: 10
+```
 ### 💡 Useful PowerShell Commands ###
 Finding a file in an unknown location on the C:\ drive
-```
+```ps1
 GCI -Path C:\ -Recurse -Filter "nameoffile.txt" -ErrorAction SilentlyContinue
 ```
 Add wild card for unknown file type
-```
+```ps1
 gci -Path C:\ -Recurse -Filter "nameoffile*" -ErrorAction SilentlyContinue
 ```
 ### ⚡PowerShell Automation ###
@@ -44,28 +49,28 @@ NTUSER.DAT\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU
 ### 📍 Common Mac Locations ### 
 User Home Directory Artifacts
 Most user activity on macOS is under the user’s home folder:
-```
+```bash
 ~/Library/
 ```
 Logs
-```
+```bash
 ~/Library/Logs/
 Application-specific logs, crash reports.
 ```
 
 Preferences (Plist files)
-```
+```bash
 ~/Library/Preferences/*.plist
 Tracks app configurations, recently accessed items, user choices.
 ```
 
 Application Support
-```
+```bash
 ~/Library/Application Support/
 Contains app-specific data, caches, histories.
 ```
 Safari Browser Artifacts
-```
+```bash
 History: ~/Library/Safari/History.db
 Downloads: ~/Library/Safari/Downloads.plist
 Cookies: /Library/Cookies/Cookies.binarycookies
@@ -74,12 +79,12 @@ Chrome / Brave / Edge Browser Artifacts
 History, cookies, logins, cache.
 ```
 Mail.app
-```
+```bash
 ~/Library/Mail/V#
 Emails, envelopes, logs.
 ```
 Keychains
-```
+```bash
 ~/Library/Keychains/
 Local password storage (encrypted).
 ```
