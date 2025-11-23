@@ -32,7 +32,7 @@ NTUSER.DAT\Software\Microsoft\Windows\CurrentVersion\Explorer\UserAssist\{GUID}\
 NTUSER.DAT\Software\Microsoft\Windows\CurrentVersion\Explorer\ComDlg32\LastVisitedPidMRU
 NTUSER.DAT\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU
 ```
-# Mac Forensics
+### 📍 Common Mac Locations ### 
 User Home Directory Artifacts
 Most user activity on macOS is under the user’s home folder:
 ```
