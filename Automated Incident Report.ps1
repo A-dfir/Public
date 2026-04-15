@@ -34,14 +34,16 @@ $Report = @"
 -------------------------------------------------
 $Greeting,
 
-On $DateTime, the issuing agency **$Agency** reported an issue involving asset **$AssetName**.
+On $DateTime, the issuing agency $Agency reported an incident involving asset **$AssetName**.
 
-The issue identified was **$Issue**.
+The incident identified $Issue as stated below
 
 Description:
 $IssueDescription
 
 The user associated with this asset can be contacted at **$Email**.
+
+If you have any questions or concerns, please let us know.
 
 -------------------------------------------------
 End of Report
