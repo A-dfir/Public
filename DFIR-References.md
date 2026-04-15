@@ -111,14 +111,14 @@ C:\Windows\System32\winevt\logs\Microsoft-Windows-PowerShell%40Operational.evtx
 ```
 C:\Windows\System32\winevt\Logs\Windows PowerShell.evtx
 ```
-### Hashing ###
+### #️⃣ Hashing ###
 ```
 certutil -hashfile C:\pathtofile\file.exe md5
 ```
 ```ps1
 Get-FileHash C:\pathtofile\file.csv -Algorithm SHA384 | Format-List
 ```
-### Robocopy ###
+### 🤖 Robocopy ###
 Copy everything
 ```
 robocopy /E C:\pathtotarget\ C:\pathtodestination
@@ -129,13 +129,13 @@ Single file
 robocopy C:\pathtotarget "%CD%" $MFT
 robocopy \\hostnameorIP\c$\pathtotarget c:\pathtodestination $MFT
 ```
-### RawCopy ###
+### 📎 RawCopy ###
 ```
 #Put rawcopy onto affected device
 copy C:\localpathto\rawcopy.exe \\hostnameorip\c$\pathtodestination\
 wmic /node:hostnameorIP process call create 'cmd.exe /c \\uhostnameorIP\c$\pathtorawcopy'
 ```
-### Dir commands ###
+### 📃 Dir commands ###
 Organize by date
 ```
 dir /OD \\hostnameorIP\c$\path
@@ -156,11 +156,11 @@ Recently opened attachment's as preview or opened file
 ```
 dir /S /OD \\iporhostname\C$\Users\%username%\AppData\Local\Microsoft\Windows\INetCache\Content.Outlook\ 
 ```
-### Initiate remote shutdown of device ###
+### 🪫 Initiate remote shutdown of device ###
 ```
 shutdown /r /f /m \\hostnameorIP
 ```
-### Uninstalling / Removing items ###
+### ➖ Uninstalling / Removing items ###
 Remove directory
 ```
 rd /s /q C:\targetpath
@@ -169,12 +169,12 @@ Remove with MSIExec
 ```
 msiexec /x <wmic ID> /qn
 ```
-### Zip files ###
+### 🤐 Zip files ###
 To view contents without unzipping 
 ```
 tar -tf C:\filepath\file.zip
 ```
-### WMIC ###
+### 💻 WMIC ###
 Find USB's and map to port if device is on-hand
 ```
 wmic diskdrive get  Model,Name,InterfaceType,SerialNumber
