@@ -8,6 +8,22 @@ Collect MFT
 ```
 getfile "$MFT"
 ```
+Find a file
+```
+findfile "file.txt"
+```
+Find metadata of file
+```
+fileinfo "file.exe"
+```
+See all processes
+```
+processes
+```
+Restore a remdiated item
+```
+undo
+```
 Quarantine a file
 ```
 remediate file C:\Path\To\Your\File.exe
@@ -95,12 +111,89 @@ C:\Windows\System32\winevt\logs\Microsoft-Windows-PowerShell%40Operational.evtx
 ```
 C:\Windows\System32\winevt\Logs\Windows PowerShell.evtx
 ```
-Hashing
+### Hashing ###
 ```
 certutil -hashfile C:\pathtofile\file.exe md5
 ```
 ```ps1
 Get-FileHash C:\pathtofile\file.csv -Algorithm SHA384 | Format-List
+```
+### Robocopy ###
+Copy everything
+```
+robocopy /E C:\pathtotarget\ C:\pathtodestination
+robocopy /E \\hostnameorIP\c$\pathtotarget C:\pathtodestination
+```
+Single file
+```
+robocopy C:\pathtotarget "%CD%" $MFT
+robocopy \\hostnameorIP\c$\pathtotarget c:\pathtodestination $MFT
+```
+### RawCopy ###
+```
+#Put rawcopy onto affected device
+copy C:\localpathto\rawcopy.exe \\hostnameorip\c$\pathtodestination\
+wmic /node:hostnameorIP process call create 'cmd.exe /c \\uhostnameorIP\c$\pathtorawcopy'
+```
+### Dir commands ###
+Organize by date
+```
+dir /OD \\hostnameorIP\c$\path
+dir /OD c:\path
+dir /OD C:\Windows\Prefetch
+```
+Findstr / grep functions 
+```
+dir "nameoffile.exe" /s
+dir C:\path\filename*
+dir c:\path\to\parentdirectory | findstr / i nameoffile
+```
+Hidden files
+```
+dir /ah C:\$recycle.bin
+```
+Recently opened attachment's as preview or opened file
+```
+dir /S /OD \\iporhostname\C$\Users\%username%\AppData\Local\Microsoft\Windows\INetCache\Content.Outlook\ 
+```
+### Initiate remote shutdown of device ###
+```
+shutdown /r /f /m \\hostnameorIP
+```
+### Uninstalling / Removing items ###
+Remove directory
+```
+rd /s /q C:\targetpath
+```
+Remove with MSIExec
+```
+msiexec /x <wmic ID> /qn
+```
+### Zip files ###
+To view contents without unzipping 
+```
+tar -tf C:\filepath\file.zip
+```
+### WMIC ###
+Find USB's and map to port if device is on-hand
+```
+wmic diskdrive get  Model,Name,InterfaceType,SerialNumber
+```
+Get installed applications non-user tied
+```
+wmic /node:hostname product get name,description,identifyingnumber,installsource
+```
+Installed applications 
+```
+wmic /node:hostname product get name,version,vendor
+```
+Get Process list and info
+```
+wmic /node:hostname process get ProcessId,Description,ParentProcessId,ExecutablePath | sort | findstr /i nameoffile
+```
+Get MFT 
+```
+wmic /node:hostnameorip process call create 'cmd.exe /c \\hostnameorip\c$\pathtorawcopy\rawcopy64.exe /filenamepath "C:0" /outputpath:\hostnameorip\c$\pathtosavedevidence\onremotemachine'
 ```
 ### 📍 Common Mac Locations ### 
 User Home Directory Artifacts
