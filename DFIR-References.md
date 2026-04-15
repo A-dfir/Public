@@ -26,7 +26,7 @@ undo
 ```
 Quarantine a file
 ```
-remediate file C:\Path\To\Your\File.exe
+remediate file C:\Path\To\File.exe
 ```
 ### 🛡️ Elastic/Kibana ###
 Logon Remote Events Query
@@ -71,7 +71,7 @@ Same command but for remote machines
  Get-PnpDevice -CimSession hostname.domain -PresentOnly | Where-Object InstanceId -Like USB* | sort Class | Format-Table -AutoSize
 ```
 ### ⚡PowerShell Automation ###
-Incident Report.ps1
+Automated Incident Report.ps1
 ### 📍 Common Windows Locations ###
 Registry Event-Log files
 ```
