@@ -1,4 +1,5 @@
-🔄️ # HTTP Response Codes:
+🔄️ 
+# HTTP Response Codes:
 ```
 200 - Indicates a successful GET or POST request known as an OK. You went and got a page and it came back successfully 
 201 - Indicates a PUT request has been successful in creating a resource. 
@@ -14,7 +15,8 @@
 503 – Indicates an overloading of the server causing service unavailability
 504 – Indicates a gateway timeout which means there’s an issue with the upstream server. 
 ```
-💯 # Character	Percent Encoding
+💯 
+# Character	Percent Encoding
 ```
 Null	        %00
 Space	        %20
@@ -30,7 +32,8 @@ Space	        %20
 ?	            %3F
 \	            %5C
 ```
-🔨 # Tools: 
+🔨 
+# Tools: 
 1. BrowsingHistoryViewer 
 2. EZ-Viewer
 3. Hindsight
@@ -38,7 +41,8 @@ Space	        %20
 5. Wireshark
 6. ELK
 
-🔍 # Browsers' history files common paths: 
+🔍 
+# Browsers' history files common paths: 
 ```
 Computer artifact locations: 
 EDGE: C:\User\%username%\AppData\Local\Microsoft\Edge\User Data\Default\History
