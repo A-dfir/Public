@@ -21,7 +21,8 @@ grep -I	                                                                        
 grep -i 	                                                                      Ignore case sensitivity
 grep -L	                                                                        Return names of files without matching lines
 grep -r 192\.168\.1\.[0-255] .	                                                Since we know IPs don't go above 255 our last query would've included 192.168.1.999 which isn't a valid IP address so [0-255] limits to actual IP address and . means same directory 
-grep -r 192\.168\.1\[\d]{1,3} . 	Grep -r                                       Recursive looking inside this file or directory and all subsequent. the '.' at the end indicates what directly which is the current directory we're in. The [\d] specifies I want to see something with digits and {1,3} details how many digits either 1 2 or 3 digits
+grep -r 192\.168\.1\[\d]{1,3} .                                                 Recursive looking inside this file or directory and all subsequent. the '.' at the end indicates what directly which is the current directory we're in. The [\d] specifies I want to see something with digits and {1,3} details how many digits either 1 2 or 3 digits
+Grep -r                                                                         Recursive search looking all diectories and sub directories                        
 grep -v 	                                                                      Return non-matching lines
 grep -w 	                                                                      Match whole words only
 head	                                                                          A command that outputs the first 10 lines of a file specified 
