@@ -15,7 +15,7 @@ free	                                                                          C
 grep "192\.168\.1\.10" *	                                                      Searching as string of exact IP address 192.168.1.10 across all files *. While quotes protect from shell intepretation, regex still needs to interpet the data so you have to "escape" for the period to be interpeted correctly
 grep "NetworkManager" /var/log/syslog | cut -d " " -f1-5 | sort -t " " -k3 	    Search for the word NetworkManager inside /var/log/syslog piping it to the next command which is going to deliniate based on spaces " " seeing the first 5 columns based on the deliniator. We then sort by spaces -t " "      Looking for the 3rd column -k3
 grep "NetworkManager" /var/log/syslog | cut -d " " -f1-5 > test.txt echo "yay"	Looks for networkmanager in /var/log/syslog dileniates anything with a space " " within th first five columns and outputs that into a file called test.txt and says yay after compltet
-grep -c	Return a count of matching lines
+grep -c	                                                                        Return a count of matching lines
 grep -F 192.168.1.10 access.log	Grep -F                                         Means to literally search for this IP address Access.log means to search within file. 
 grep -I	                                                                        Return names of files with matching lines
 grep -i 	                                                                      Ignore case sensitivity
